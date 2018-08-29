@@ -1,0 +1,25 @@
+apply plugin: 'groovy'
+
+dependencies {
+    compile gradleApi()//gradle sdk
+    compile localGroovy()//groovy sdk
+
+    /**
+     Error:Error converting bytecode to dex:
+     Cause: Dex cannot parse version 52 byte code.  52是Java8的字节码版本号
+     This is caused by library dependencies that have been compiled using Java 8 or above.
+     If you are using the 'java' gradle plugin in a library submodule add
+     targetCompatibility = '1.7'
+     sourceCompatibility = '1.7'
+     to that submodule's build.gradle file.
+
+     这个问题的第二种解决办法 sourceCompatibility = 1.7  targetCompatibility = 1.7
+     */
+
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
+}
+
+repositories {
+    jcenter()
+}

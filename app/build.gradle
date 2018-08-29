@@ -1,0 +1,60 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.hc.gradle'
+apply plugin: com.hc.second.ApkDistPlugin
+
+apkdistconf {
+    nameMap { name ->
+        println '===============================> name = ' + name
+        return name
+    }
+    destDir 'D://'
+}
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "com.example.lenovo.myplugindemo"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+//        jackOptions{
+//            enabled true
+//        }
+    }
+
+    /**
+     Error:Error converting bytecode to dex:
+     Cause: Dex cannot parse version 52 byte code.  52是Java8的字节码版本号
+     This is caused by library dependencies that have been compiled using Java 8 or above.
+     If you are using the 'java' gradle plugin in a library submodule add
+     targetCompatibility = '1.7'
+     sourceCompatibility = '1.7'
+     to that submodule's build.gradle file.
+
+     这个问题的第一种解决办法 需要 jackOptions  和  comipleOptions 两个配置
+     */
+
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+//    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile project(':buildsrc')
+}
+
+

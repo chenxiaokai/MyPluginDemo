@@ -6,8 +6,11 @@ buildscript {
         //mavenDeployer  需要下面依赖
         maven { url "https://jitpack.io" }
         maven{
-            //插件地址
-            url uri('D:/repos')
+            //windows 环境 插件地址
+//            url uri('D:/repos')
+
+            //mac 环境 插件地址
+            url uri('/Users/chenxiaokai/repos')
         }
     }
     dependencies {

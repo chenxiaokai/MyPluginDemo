@@ -23,8 +23,11 @@ uploadArchives{
 //                authentication(userName:"admin",password:"admin")
 //            }
 
-            //本地的maven地址设置 D:/repos
-            repository(url: uri('D:/repos'))
+            //windows 环境 本地的maven地址设置 D:/repos
+//            repository(url: uri('D:/repos'))
+
+            //mac 环境
+            repository(url: uri('/Users/chenxiaokai/repos'))
         }
     }
 }

@@ -34,7 +34,7 @@ android {
      sourceCompatibility = '1.7'
      to that submodule's build.gradle file.
 
-     这个问题的第一种解决办法 需要 jackOptions  和  comipleOptions 两个配置
+     这个问题的第一种解决办法 需要 jackOptions  和  compileOptions 两个配置
      */
 
 //    compileOptions {
